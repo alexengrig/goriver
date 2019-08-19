@@ -25,11 +25,24 @@ func main() {
 	argsLength := len(os.Args)
 	if argsLength == 1 {
 		help()
+	} else {
+		command := os.Args[1]
+		switch command {
+		case HelpCommandName:
+			help()
+			break
+		default:
+			fmt.Printf("%s: '%s' is not a %s command. See '%s %s'.",
+				RootCommandName, command, RootCommandName, RootCommandName, HelpCommandName)
+		}
 	}
 }
 
-const CommandName string = "gori"
+const (
+	RootCommandName string = "gori"
+	HelpCommandName string = "help"
+)
 
 func help() {
-	fmt.Printf("usage: %s <command> [<args>]\n", CommandName)
+	fmt.Printf("usage: %s <command> [<args>]\n", RootCommandName)
 }
