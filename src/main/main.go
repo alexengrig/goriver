@@ -31,6 +31,9 @@ func main() {
 		case HelpCommandName:
 			help()
 			break
+		case VersionCommandName:
+			version()
+			break
 		default:
 			fmt.Printf("%s: '%s' is not a %s command. See '%s %s'.",
 				RootCommandName, command, RootCommandName, RootCommandName, HelpCommandName)
@@ -39,10 +42,16 @@ func main() {
 }
 
 const (
-	RootCommandName string = "gori"
-	HelpCommandName string = "help"
+	Version            string = "0.0.1"
+	RootCommandName    string = "gori"
+	HelpCommandName    string = "help"
+	VersionCommandName string = "version"
 )
 
 func help() {
 	fmt.Printf("usage: %s <command> [<args>]\n", RootCommandName)
+}
+
+func version() {
+	fmt.Printf("%s version %s", RootCommandName, Version)
 }
